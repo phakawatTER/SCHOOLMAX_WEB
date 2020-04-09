@@ -1,0 +1,154 @@
+
+$theme-color-primary : #278ab5;
+$theme-color-secondary : rgba(39,138,181,0.75);
+$theme-color-warning : #eacc1d;
+$theme-color-disabled : #8c8f90;
+$theme-opacity:0.75;
+@font-face {
+    font-family: prompt;
+    src: url("../fonts/Prompt-Light.ttf");
+  };
+
+body {
+    font-family: prompt!important;
+    color:$theme-color-disabled;
+    overflow-x:hidden;
+}
+
+.footer-social-logo {
+    margin:5px;
+    color:white;
+    display: flex;
+    align-items: center;
+}
+
+.footer-social-logo > img {
+    cursor:pointer;
+    margin:5px;
+    width:35px;
+}
+
+.footer-social-logo > a {
+    text-decoration: none;
+}
+
+
+.option-card {
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:40vh;
+}
+.option-card:hover {
+    cursor:pointer;
+    transition: 0.5s;
+}
+
+
+.content-text-card {
+    color:$theme-color-disabled;
+    text-align:left;
+    width:85%;
+}
+
+.search-box {
+    min-width: 20vw;
+    height: auto;
+}
+.select-language {
+    display: inline-block;
+}
+.select-language > span {
+    color:$theme-color-disabled;
+    cursor:pointer;
+}
+
+.search-icon {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.text-primary {
+    color:$theme-color-primary!important;
+}
+
+.text-secondary {
+    color:$theme-color-secondary!important;
+}
+
+.text-disabled {
+    color:$theme-color-disabled!important;
+}
+
+.primary-bg{
+    background-color:$theme-color-primary!important;
+}
+.secondary-bg{
+    background-color:$theme-color-secondary!important;
+}
+.disabled-bg{
+    background-color:$theme-color-disabled!important;
+}
+.warning-bg {
+    background-color:$theme-color-warning!important;
+}
+
+.faded-row {
+    background-color:rgba(120,120,120,0.1);
+}
+
+
+.active-link {
+    color:$theme-color-primary!important;
+}
+.link {
+    color:$theme-color-disabled;
+    font-weight: bold;
+}
+a:hover , .nav-link:hover {
+    color:$theme-color-primary;
+    text-decoration: none;
+}
+
+.btn , input {
+    border: none;
+}
+
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+     display: block;
+}
+
+.img-banner {
+    width: 100%;
+    height: auto;
+     display: block;
+}
+
+
+
+.page-footer {
+    border-top:12.5px solid $theme-color-warning;
+    background-color: $theme-color-primary;
+    color:white;
+}
+
+@media (min-width: 1440px) {
+    .container-xl{
+        max-width: 1600px;
+        padding:0;
+    }
+}
+@media (max-width:1439px) {
+    .container-xl{
+        max-width: 100vw;
+        min-width:100vw;
+        padding:0;
+    }
+}

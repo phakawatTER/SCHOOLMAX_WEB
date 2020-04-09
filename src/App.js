@@ -1,26 +1,49 @@
 import React from 'react';
 import logo from './logo.svg';
+import TopNavbar from "./component/Navbar"
+import Footer from "./component/Footer"
 import './App.css';
+import { Switch, Route, Redirect } from 'react-router';
+import routes from "route.js"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      language: "th"
+    }
+  }
+  changeLanguage = (language) => {
+    this.setState({ language })
+  }
+
+  getRoute = () => {
+    return routes.map(route => {
+      let { language } = this.state
+      const { path, component } = route
+      const Element = React.cloneElement(component, { language })
+      return <Route path={path} render={() => Element} />
+    })
+  }
+
+
+  render() {
+    const { language } = this.state
+    return (
+      <>
+        <TopNavbar changeLanguage={this.changeLanguage} language={language} />
+        <div className="wrapper wrapper-full-page" ref="fullPages">
+          <Switch>
+            {this.getRoute()}
+            <Redirect from="/" to="/home"/> 
+          </Switch>
+        </div>
+        <Footer fluids />
+
+
+      </>
+    );
+  }
 }
 
 export default App;
