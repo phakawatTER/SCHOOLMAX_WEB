@@ -6,12 +6,21 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT
 const bodyParser = require("body-parser")
+const path = require("path")
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors())
 
+console.log(process.env.NODE_ENV)
 
 const transporter = nodemailer.createTransport({
+
+host: "smtp-mail.outlook.com", // hostname
+    secureConnection: false, // TLS requires secureConnection to be false
+    port: 587, // port for secure SMTP
+    tls: {
+       ciphers:'SSLv3'
+    },
 	service: 'hotmail',
 	auth: {
 		user: process.env.EMAIL,
@@ -49,6 +58,15 @@ app.post("/send/email", (req, res) => {
 	});
 })
 
+if (process.env.NODE_ENV == "production"){
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Handles any requests that don't match the ones above
+app.get('*', (req,res) =>{
+    console.log("requset for static file")
+    res.sendFile(path.join(__dirname,'/build/index.html'));
+});
+}
 
 
 app.listen(PORT, () => {
