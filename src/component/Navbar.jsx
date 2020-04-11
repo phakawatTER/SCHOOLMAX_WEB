@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { NavLink } from "react-router-dom"
+import { NavLink, useHistory } from "react-router-dom"
 import { GoSearch } from "react-icons/go"
+import { CONTENT_TEXT } from "appdata"
 import {
     Collapse,
     Navbar,
@@ -12,34 +13,78 @@ import {
     InputGroupText,
     Nav,
     Row, Col,
-    Form,
-    Button,
     NavItem,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText
 } from 'reactstrap';
 
 const SchoolMaxLogo = require("static/imgs/logos/SCHOOLMax-logo.png")
-const searchIcon = require("static/imgs/icons/search-icon.png")
+const style = {
+    navbar_toolbox: { flexDirection: "column", alignItems: "flex-end", },
+}
 
 const TopNavbar = (props) => {
+    const { language } = props
     const [isOpen, setIsOpen] = useState(false);
+    const [showModal, setShowModal] = useState(false)
+    const [searchText, setSearchText] = useState("");
+    const [searchFound, setSearchFound] = useState(false);
+    const history = useHistory()
     const toggle = () => setIsOpen(!isOpen);
+    const search = () => {
+        if (searchText === "") return history.push("/home")
+        for (let [page, value] of Object.entries(CONTENT_TEXT)) {
+            for (let [language, value] of Object.entries(CONTENT_TEXT[page])) {
+                let pagedata = JSON.stringify(value).toLowerCase()
+                if (pagedata.includes(searchText.toLowerCase())) {
+                    return history.push(`/${page}?search=${searchText.toLowerCase()}`)
+                }
+            }
+        }
+
+        // does not find any matched result
+        props.useModal(
+            () => (<>
+                <h3>
+                    {
+                        language == "th" ?
+                            `ผลการค้นหา "${searchText}"`
+                            :
+                            `Search result for "${searchText}"`
+
+                    }
+                </h3>
+                <p>
+                    {language == "th" ?
+                        `ไม่พบข้อมูลในระบบ"`
+                        :
+                        `No matched result found.`}
+                </p>
+            </>)
+        )
+    }
+
+
     return (
-        <div>
-            <Navbar color="light" light expand="md">
-                <NavbarBrand href="/"><img src={SchoolMaxLogo} className="img-responsive" /></NavbarBrand>
+        <>
+            <Navbar className={"container"} color="light" light expand="md" fixed={"top"} >
+                <NavbarBrand onClick={() => history.push("/")}><img src={SchoolMaxLogo} className="img-responsive" /></NavbarBrand>
                 <NavbarToggler onClick={toggle} />
-                <Collapse isOpen={isOpen} navbar style={{ flexDirection: "column" }}>
+                <Collapse isOpen={isOpen} navbar style={style.navbar_toolbox}>
                     <Row>
                         <Col>
                             <InputGroup className="search-box">
-                                <Input placeholder="" />
-                                <InputGroupAddon addonType="append">
-                                    <InputGroupText className="bg-primary" style={{ color: "white" }} bold>
+                                <Input placeholder=""
+                                    value={searchText}
+                                    onChange={(e) => { setSearchText(e.target.value) }}
+                                    onKeyDown={
+                                        (e) => {
+                                            if (e.key === 'Enter') {
+                                                search()
+                                            }
+                                        }
+                                    }
+                                />
+                                <InputGroupAddon addonType="append" onClick={search}>
+                                    <InputGroupText className="bg-primary" style={{ color: "white", cursor: "pointer" }} bold>
                                         <GoSearch />
                                     </InputGroupText>
                                 </InputGroupAddon>
@@ -47,9 +92,9 @@ const TopNavbar = (props) => {
                         </Col>
                         <Col>
                             <div className="select-language">
-                                <span style={{ fontWeight: props.language == "en" ? "bold" : "normal" }}
+                                <span style={{ fontWeight: language == "en" ? "bold" : "normal" }}
                                     onClick={() => props.changeLanguage("en")}
-                                >EN</span> | <span style={{ fontWeight: props.language == "th" ? "bold" : "normal" }}
+                                >EN</span> | <span style={{ fontWeight: language == "th" ? "bold" : "normal" }}
                                     onClick={() => props.changeLanguage("th")}
                                 >TH</span>
                             </div>
@@ -76,7 +121,7 @@ const TopNavbar = (props) => {
                     </div>
                 </Collapse>
             </Navbar>
-        </div >
+        </>
     );
 }
 

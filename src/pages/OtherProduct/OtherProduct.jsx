@@ -4,34 +4,17 @@ import Product1 from "./assets/image-1.jpg"
 import Product2 from "./assets/image-2.jpg"
 import CatalogTH from "./assets/catalog-icon---th.png"
 import CatalogEN from "./assets/catalog-icon---en.png"
+import { CONTENT_TEXT } from "appdata"
 
+const product1_catalog_path = require("./catalog/sample.odt")
+const product2_catalog_path = require("./catalog/sample.odt")
 
-const content_text = {
-    th: {
-        title: "อุปกรณ์สำหรับห้องเรียน",
-        product: ["BenQ Interactive Flat Panel", "BenQ Smart Projector"],
-        product_description: [
-            "จอแบบสัมผัสสำหรับห้องเรียนที่ถูกออกแยยให้ใช้งานง่าย ที่จะพาสถานศึกษาของคุณไปอีกขั้น พร้อมคุณสมบัติต่างๆ เช่น",
-            "สมาร์ทโปรเจคเตอร์รุ่นแรกของโลกจาก BenQ ที่จะพาสถานศึกษาของคุณขึ้นไปอีกขั้น"
-        ],
-        product_bullet_points: [
-            [
-                "หน้าจอ 4K UHD",
-                "หน้าจอ Germ-Resistant",
-                "หน้าจอ Eye-Care solution",
-                "Instant plug and play"
-            ], []
-        ],
-        learnmore_right: "เรียนรู้เพิ่มเติม กรุณาดาวน์โหลดโปรแกรมแคตาล็อกด้านขวา หรือติดต่อเรา",
-        learnmore_left: "เรียนรู้เพิ่มเติม กรุณาดาวน์โหลดโปรแกรมแคตาล็อกด้านซ้าย หรือติดต่อเรา"
-    },
-    en: {},
-}
+const content_text = CONTENT_TEXT["product"]
 
 const customStyle = {
     image_content: { maxHeight: 200 },
     transparent: { backgroundColor: "rgba(0,0,0,0)" },
-    catalog_button: { maxHeight: 50 },
+    catalog_button: { maxHeight: 50, cursor: "pointer" },
 }
 
 
@@ -44,7 +27,7 @@ const OtherProduct = (props) => {
         let { learnmore_right } = content_text[language]
         return (
             <>
-                <Card className="border-0">
+                <Card className="border-0 mx-0" >
                     <CardHeader className="border-0" style={{ ...customStyle.transparent }}>
                         <CardTitle>
                             <h1 className="text-disabled pl-4">
@@ -79,10 +62,9 @@ const OtherProduct = (props) => {
                             </Col>
                             <Col>
                                 {
-                                    language == "th" ?
-                                        <img src={CatalogTH} style={{ ...customStyle.catalog_button }} />
-                                        :
-                                        <img src={CatalogEN} style={{ ...customStyle.catalog_button }} />
+                                    <a href={product1_catalog_path}>
+                                        <img src={language == "th" ? CatalogTH : CatalogEN} style={{ ...customStyle.catalog_button }} />
+                                    </a>
                                 }
                             </Col>
                         </Row>
@@ -103,7 +85,9 @@ const OtherProduct = (props) => {
 
         return (
             <>
-                <Card className="border-0 faded-row">
+
+
+                <Card className="border-0 faded-row mx-0">
                     <CardHeader className="border-0" style={{ ...customStyle.transparent }}>
                         <CardTitle>
                         </CardTitle>
@@ -119,7 +103,7 @@ const OtherProduct = (props) => {
                                 </h1>
                             </Col>
                         </Row>
-                        <Row className={"pt-4"}>
+                        <Row className={"pt-4 mx-0"}>
                             <Col md={4} />
                             <Col md={8}>
                                 <h4>
@@ -127,14 +111,13 @@ const OtherProduct = (props) => {
                                 </h4>
                             </Col>
                         </Row>
-                        <Row className={"pt-4"}>
+                        <Row className={"pt-4 mx-0"}>
 
                             <Col align="right" md={4}>
                                 {
-                                    language == "th" ?
-                                        <img src={CatalogTH} style={{ ...customStyle.catalog_button }} />
-                                        :
-                                        <img src={CatalogEN} style={{ ...customStyle.catalog_button }} />
+                                    <a href={product2_catalog_path}>
+                                        <img href={product1_catalog_path} src={language == "th" ? CatalogTH : CatalogEN} style={{ ...customStyle.catalog_button }} />
+                                    </a>
                                 }
                             </Col>
                             <Col md={8} align="left" >
@@ -143,7 +126,8 @@ const OtherProduct = (props) => {
                                 </h5>
                             </Col>
                         </Row>
-                        <br/>
+                        <br />
+
                         <img src={Product2} className="img-banner px" />
 
                     </CardBody>
@@ -154,8 +138,8 @@ const OtherProduct = (props) => {
 
     return (
         <>
-            <Container fluid={"xl"}>
-                <Row>
+            <Container fluid={"xl"} className="content-fade-in">
+                <Row className={"mx-0"}>
                     <img src={require("./assets/Other-products-banner.jpg")} className="img-banner" />
                 </Row>
 

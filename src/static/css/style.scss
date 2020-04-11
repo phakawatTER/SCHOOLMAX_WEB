@@ -9,10 +9,34 @@ $theme-opacity:0.75;
     src: url("../fonts/Prompt-Light.ttf");
   };
 
+html , body {
+    height:100%
+}
 body {
     font-family: prompt!important;
     color:$theme-color-disabled;
     overflow-x:hidden;
+}
+
+@keyframes fade-in {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.navbar {
+    width:100%;
+    max-width: 1600px;
+}
+.wrapper-full-page {
+    min-height:96vh;
+}
+
+.content-fade-in {
+    animation: fade-in 1.25s ease-in-out;
 }
 
 .footer-social-logo {
@@ -38,7 +62,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height:40vh;
+    height:30vh;
 }
 .option-card:hover {
     cursor:pointer;
@@ -131,9 +155,9 @@ a:hover , .nav-link:hover {
      display: block;
 }
 
-
-
 .page-footer {
+    width: 100%;
+    max-width: 1600px;
     border-top:12.5px solid $theme-color-warning;
     background-color: $theme-color-primary;
     color:white;
@@ -151,4 +175,8 @@ a:hover , .nav-link:hover {
         min-width:100vw;
         padding:0;
     }
+}
+
+.navbar-brand {
+    max-width: 200px;
 }

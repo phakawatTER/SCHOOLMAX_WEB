@@ -1,34 +1,37 @@
 import React from "react"
-import { Row, Col, CardHeader, CardTitle, Card, CardBody, Label, Container, Input, Button, FormGroup, Form } from "reactstrap"
+import {
+    Row,
+    Col,
+    CardHeader,
+    CardTitle,
+    Card,
+    CardBody,
+    Label,
+    Container,
+    Input,
+    Button,
+    FormGroup,
+    Modal,
+    ModalBody,
+    ModalHeader,
+    ModalFooter,
+} from "reactstrap"
 import AddressIcon from "./assets/Address-icon.png"
 import EmailIcon from "./assets/Email-icon.png"
 import TelephoneIcon from "./assets/Telephone-icon.png"
 import FacebookIcon from "./assets/Facebook-blue-icon.png"
+import { API_SEND_EMAIL, CONTENT_TEXT } from "appdata"
+import axios from "axios"
 
-const content_text = {
+const modal_text = {
     th: {
-        company:
-        {
-            title: "ติดต่อ",
-            address_bold: "บริษัท แสงรุ่ง เอ็ดดูเคชั่น จำกัด",
-            address: `99/99 หมู่1 ถนนราชพฤกษ์ บางขุนทอง บางกรวย
-            นนทบุรี 11130`,
-            email: "contach@saengroong.com",
-            telephone: "092-369-3969, 088-499-8811",
-            facebook: "SCHOOLMax World",
-        },
-        client: {
-            title: "ติดต่อด่วน",
-            name: "ชื่อ-นามสกุล",
-            company: "บริษัท/โรงเรียน",
-            email: "อีเมล",
-            telephone: "โทรศัพท์",
-            message: "ข้อความ",
-            button_label: "ส่ง"
-        }
+        modal_header: "ส่งอีเมลเสร็จสิ้น",
+        modal_body: "ข้อมูลการติดต่อของคุณส่งไปยังพนักงานเป็นที่เรียบร้อย",
+        close_button: "ปิด"
     },
-    en: {},
+    en: {}
 }
+const content_text = CONTENT_TEXT["contact"]
 
 
 const customStyle = {
@@ -39,17 +42,22 @@ const customStyle = {
     }
 }
 
+const default_input_data = {
+    name: "",
+    company: "",
+    email: "",
+    telephone: "",
+    message: "",
+}
+
 
 class Contact extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            name: "",
-            company: "",
-            email: "",
-            telephone: "",
-            message: "",
+            show_modal: false,
+            ...default_input_data
         }
     }
 
@@ -59,7 +67,28 @@ class Contact extends React.Component {
     }
 
     contactCompanyHandler = () => {
-        alert("Contact Sent...")
+        let { language } = this.props
+        this.props.useModal(() => (
+            <>
+                <h4>
+                    {modal_text[language].modal_header}
+                </h4>
+                <p>
+                    {modal_text[language].modal_body}
+                </p>
+            </>
+        ))
+        let { name, company, email, telephone, message } = this.state
+        this.setState({ show_modal: true })
+        axios.post(API_SEND_EMAIL, { name, company, email, telephone, message }).then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    onModalCloseHandler = () => {
+        this.setState({ ...default_input_data }, () => { })
     }
 
     render() {
@@ -169,13 +198,17 @@ class Contact extends React.Component {
             </Card>
         )
 
+
         return (
             <>
-                <Container fluid={"xl"}>
-                    <Row>
+
+                {/* {modal()} */}
+                <Container fluid={"xl"} className="content-fade-in">
+
+                    <Row className={"mx-0"}>
                         <img src={require("./assets/Contact-banner.jpg")} className="img-banner" />
                     </Row>
-                    <Row>
+                    <Row className={"mx-0"}>
                         <Col md={7}>
                             {contactInfo()}
                         </Col>
