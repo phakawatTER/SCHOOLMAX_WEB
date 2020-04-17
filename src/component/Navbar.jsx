@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink, useHistory } from "react-router-dom"
 import { GoSearch } from "react-icons/go"
-import { CONTENT_TEXT } from "appdata"
+import { CONTENT_TEXT, NAVBAR_TEXT } from "appdata"
+import classNames from "classnames"
 import {
     Collapse,
     Navbar,
@@ -62,34 +63,21 @@ const TopNavbar = (props) => {
         )
     }
 
+    const linkClassNames = classNames(
+        "link",
+        "nav-link",
+        // { "ฟ": language == "th" }
+    )
+
 
     return (
         <>
-            <Navbar className={"container"} color="light" light expand="md" fixed={"top"} >
+            <Navbar className={"container"} color="white" light expand="md" fixed={"top"}>
                 <NavbarBrand onClick={() => history.push("/")}><img src={SchoolMaxLogo} className="img-responsive" /></NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar style={style.navbar_toolbox}>
                     <Row>
-                        <Col>
-                            <InputGroup className="search-box">
-                                <Input placeholder=""
-                                    value={searchText}
-                                    onChange={(e) => { setSearchText(e.target.value) }}
-                                    onKeyDown={
-                                        (e) => {
-                                            if (e.key === 'Enter') {
-                                                search()
-                                            }
-                                        }
-                                    }
-                                />
-                                <InputGroupAddon addonType="append" onClick={search}>
-                                    <InputGroupText className="bg-primary" style={{ color: "white", cursor: "pointer" }} bold>
-                                        <GoSearch />
-                                    </InputGroupText>
-                                </InputGroupAddon>
-                            </InputGroup>
-                        </Col>
+                        
                         <Col>
                             <div className="select-language">
                                 <span style={{ fontWeight: language == "en" ? "bold" : "normal" }}
@@ -103,19 +91,19 @@ const TopNavbar = (props) => {
                     <div>
                         <Nav className="mr-auto" navbar>
                             <NavItem>
-                                <NavLink to="/home/" className="link nav-link" activeClassName="active-link">HOME</NavLink>
+                                <NavLink onClick={() => { setIsOpen(false) }} to="/home/" className={linkClassNames} activeClassName="active-link">{NAVBAR_TEXT[language].home}</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink to="/software/" className="link nav-link" activeClassName="active-link">SOFTWARE</NavLink>
+                                <NavLink onClick={() => { setIsOpen(false) }} to="/software/" className={linkClassNames} activeClassName="active-link">{NAVBAR_TEXT[language].software}</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink to="/product/" className="link nav-link" activeClassName="active-link">OTHER PRODUCTS</NavLink>
+                                <NavLink onClick={() => { setIsOpen(false) }} to="/product/" className={linkClassNames} activeClassName="active-link">{NAVBAR_TEXT[language].otherproduct}</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink to="/service/" className="link nav-link" activeClassName="active-link">SERVICES</NavLink>
+                                <NavLink onClick={() => { setIsOpen(false) }} to="/service/" className={linkClassNames} activeClassName="active-link">{NAVBAR_TEXT[language].service}</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink to="/contact/" className="link nav-link" activeClassName="active-link">CONTACT</NavLink>
+                                <NavLink onClick={() => { setIsOpen(false) }} to="/contact/" className={linkClassNames} activeClassName="active-link">{NAVBAR_TEXT[language].contact}</NavLink>
                             </NavItem>
                         </Nav>
                     </div>

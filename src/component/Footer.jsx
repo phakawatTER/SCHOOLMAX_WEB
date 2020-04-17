@@ -6,24 +6,24 @@ import { NavLink } from "react-router-dom"
 // used for making the prop types of this component
 import PropTypes from "prop-types";
 
-const social_link = "www.facebook.com"
+const social_link = "http://www.facebook.com"
 
 class Footer extends React.Component {
 
     render() {
         return (
-            <footer class="page-footer font-small blue pt-4 container">
-                <div class="container-fluid text-center text-md-left">
-                    <div class="row">
-                        <div class="col-md-6 mt-md-0 mt-3 ">
+            <footer className="page-footer font-small blue pt-2 container">
+                <div className="container-fluid text-center text-md-left">
+                    <div className="row">
+                        <div className="col-6 mt-md-0 mt-3 ">
                             <div className="footer-social-logo">
                                 <img src={FacebookLogo} onClick={() => { window.open(social_link) }} />
-                                <h5 class="text-uppercase">Social Media</h5>
+                                {/* <h6 className="text-uppercase m-0">Social Media</h6> */}
                             </div>
                         </div>
-                        <div class="col-md-6 mt-md-0 mt-3">
-                            <div class="footer-copyright text-right py-3">©2020 SCHOOLMax. ALL RIGHTS RESERVED
-                </div>
+                        <div className="col-6 ">
+                            <div className="footer-copyright text-left py-3 d-block d-sm-none font-weight-bold">©2020 SCHOOLMax. ALL RIGHTS RESERVED</div>
+                            <div className="footer-copyright text-right py-3 d-none d-sm-block font-weight-bold">©2020 SCHOOLMax. ALL RIGHTS RESERVED</div>
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      language: "th",
+      language: localStorage.getItem("language") || "th",
       show_modal: false
     }
   }
@@ -29,37 +29,54 @@ class App extends React.Component {
     this.setState({ language })
   }
 
+  componentDidMount() {
+    localStorage.setItem("language", this.state.language)
+    this.changeTitle()
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.language !== this.state.language) {
+      this.changeTitle()
+    }
+  }
+
+  changeTitle = () => {
+    localStorage.setItem("language", this.state.language)
+    if (this.state.language == "th") {
+      document.title = "เพื่อการศึกษาที่ดีขึ้นไม่รู้จบ"
+    } else {
+      document.title = "For Endless Improvement in Education"
+    }
+  }
   getRoute = () => {
     return routes.map(route => {
       let { language } = this.state
       const { path, component } = route
-      const Element = React.cloneElement(component, { language, useModal: this.useModal.bind(this) })
+      const Element = React.cloneElement(component, { language, useModal: this.useModal.bind(this), toggleModal: this.toggleModal.bind(this) })
       return <Route path={path} render={() => Element} />
     })
   }
 
-  useModal = (modal_body) => {
+  useModal = (modal_body, custom_modal_style) => {
     this.setState({ modal_body, show_modal: true })
   }
 
+  toggleModal = () => {
+    this.setState({ show_modal: !this.state.show_modal })
+  }
+
   render() {
-    const { language, container_class, modal_body } = this.state
+    const { language, container_class, modal_body, custom_modal_style } = this.state
     const modal = () => {
       return (
         <Modal
+          style={custom_modal_style}
           isOpen={this.state.show_modal}
           toggle={() => this.setState({ show_modal: false })}
           onClosed={this.onModalCloseHandler}
-          size="lg"
           aria-labelledby="contained-modal-title-vcenter"
-          centered
         >
-          <ModalBody>
-            {modal_body ? modal_body() : null}
-          </ModalBody>
-          <ModalFooter>
-            <Button onClick={() => this.setState({ show_modal: false })} >{language == "th" ? "ปิด" : "Close"}</Button>
-          </ModalFooter>
+          {modal_body ? modal_body() : null}
         </Modal>)
     }
     return (
@@ -68,8 +85,7 @@ class App extends React.Component {
         <div
           className={
             "wrapper wrapper-full-page"
-          }
-          ref="fullPages" style={{ paddingTop: 70 }}>
+          }>
           <TopNavbar changeLanguage={this.changeLanguage} language={language} useModal={this.useModal.bind(this)} />
           <Switch>
             {this.getRoute()}

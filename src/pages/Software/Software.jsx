@@ -23,22 +23,22 @@ const Software = (props) => {
                         <img src={require("./assets/SCHOOLMax-Software-logo.png")} className="img-responsive" style={{ ...customStyle.image_content }} />
                     </Col>
                     <Col md={6} align="center" >
-                        <Card className="content-text-card mx-auto border-0">
-                            <CardBody >
-                                <h5 className="text-left">
+                        <Card className="h-100 content-text-card mx-auto border-0">
+                            <CardBody className={"align-items-center d-flex"}>
+                                <span className="text-left content-text-md">
                                     {content_text[language].text1}
-                                </h5>
+                                </span>
                             </CardBody>
                         </Card>
                     </Col>
                 </Row>
                 <Row className="faded-row pt-5 pb-5 mx-0">
                     <Col md={6} align="center" >
-                        <Card className="content-text-card mx-auto border-0" style={{ ...customStyle.transparent }}>
-                            <CardBody>
-                                <h5 className="text-left">
+                        <Card className="h-100 content-text-card mx-auto border-0" style={{ ...customStyle.transparent }}>
+                            <CardBody className={"align-items-center d-flex"}>
+                                <span className="text-left content-text-md">
                                     {content_text[language].text2}
-                                </h5>
+                                </span>
                             </CardBody>
                         </Card>
                     </Col>
@@ -52,11 +52,11 @@ const Software = (props) => {
                         <img src={require("./assets/Integration-logo.png")} className="img-responsive" style={{ ...customStyle.image_content }} />
                     </Col>
                     <Col md={8} align="center" >
-                        <Card className="content-text-card mx-auto border-0">
-                            <CardBody>
-                                <h5 className="text-left">
+                        <Card className="h-100 content-text-card mx-auto border-0">
+                            <CardBody className={"align-items-center d-flex"}>
+                                <span className="text-left content-text-md">
                                     {content_text[language].text3}
-                                </h5>
+                                </span>
                             </CardBody>
                         </Card>
 
@@ -68,11 +68,11 @@ const Software = (props) => {
                         <img src={require("./assets/Systemization-logo.png")} className="img-responsive" style={{ ...customStyle.image_content }} />
                     </Col>
                     <Col md={8} align="center" >
-                        <Card className="content-text-card mx-auto border-0">
-                            <CardBody>
-                                <h5 className="text-left">
+                        <Card className="h-100 content-text-card mx-auto border-0">
+                            <CardBody className={"align-items-center d-flex"}>
+                                <span className="text-left content-text-md">
                                     {content_text[language].text4}
-                                </h5>
+                                </span>
                             </CardBody>
                         </Card>
 
@@ -84,11 +84,11 @@ const Software = (props) => {
                         <img src={require("./assets/Minimization-logo.png")} className="img-responsive" style={{ ...customStyle.image_content }} />
                     </Col>
                     <Col md={8} align="center" >
-                        <Card className="content-text-card mx-auto border-0">
-                            <CardBody>
-                                <h5 className="text-left">
+                        <Card className="h-100 content-text-card mx-auto border-0">
+                            <CardBody className={"align-items-center d-flex"}>
+                                <span className="text-left content-text-md">
                                     {content_text[language].text5}
-                                </h5>
+                                </span>
                             </CardBody>
                         </Card>
 

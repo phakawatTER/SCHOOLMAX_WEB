@@ -29,7 +29,11 @@ const modal_text = {
         modal_body: "ข้อมูลการติดต่อของคุณส่งไปยังพนักงานเป็นที่เรียบร้อย",
         close_button: "ปิด"
     },
-    en: {}
+    en: {
+        modal_header: "Email sent successfully",
+        modal_body: "Your contact information has been successfully sent to our officer.",
+        close_button: "Close"
+    }
 }
 const content_text = CONTENT_TEXT["contact"]
 
@@ -70,12 +74,16 @@ class Contact extends React.Component {
         let { language } = this.props
         this.props.useModal(() => (
             <>
-                <h4>
-                    {modal_text[language].modal_header}
-                </h4>
-                <p>
-                    {modal_text[language].modal_body}
-                </p>
+                <ModalHeader toggle={() => this.props.toggleModal()}>
+                    <h4>
+                        {modal_text[language].modal_header}
+                    </h4>
+                </ModalHeader>
+                <ModalBody>
+                    <p>
+                        {modal_text[language].modal_body}
+                    </p>
+                </ModalBody>
             </>
         ))
         let { name, company, email, telephone, message } = this.state
@@ -98,7 +106,7 @@ class Contact extends React.Component {
             <Card className="border-0">
                 <CardHeader className="border-0" style={{ ...customStyle.transparent }} >
                     <CardTitle className="pt-5 text-center">
-                        <h1>
+                        <h1 className="text-responsive-h1">
                             <b>
                                 {content_text[language].company.title}
                             </b>
@@ -141,7 +149,7 @@ class Contact extends React.Component {
             <Card className="border-0 mx-auto">
                 <CardHeader className="border-0" style={{ ...customStyle.transparent }} >
                     <CardTitle className="pt-5 text-center">
-                        <h1>
+                        <h1 className="text-responsive-h1">
                             <b>
                                 {content_text[language].client.title}
                             </b>

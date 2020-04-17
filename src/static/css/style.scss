@@ -27,13 +27,23 @@ body {
     }
 }
 
+.navbar-toggler {
+    border-color:$theme-color-disabled;
+}
+
+.navbar-toggler-icon {
+    border-color:white;
+}
+
 .navbar {
-    width:100%;
-    max-width: 1600px;
+    width:100vw;
+    max-width: 100vw;
 }
 .wrapper-full-page {
+    padding-top:85px;
     min-height:96vh;
 }
+
 
 .content-fade-in {
     animation: fade-in 1.25s ease-in-out;
@@ -123,11 +133,18 @@ body {
 }
 
 .faded-row {
-    background-color:rgba(120,120,120,0.1);
+    background-color:#f0f0f0;
+}
+
+.content-padding {
+    padding-left:25px;
+    padding-right:25px;
 }
 
 
+
 .active-link {
+    font-weight: 4000!important;;
     color:$theme-color-primary!important;
 }
 .link {
@@ -146,7 +163,7 @@ a:hover , .nav-link:hover {
 .img-responsive {
     max-width: 100%;
     height: auto;
-     display: block;
+    display: block;
 }
 
 .img-banner {
@@ -156,16 +173,29 @@ a:hover , .nav-link:hover {
 }
 
 .page-footer {
-    width: 100%;
-    max-width: 1600px;
+    width: 100vw;
+    max-width: 100vw;
     border-top:12.5px solid $theme-color-warning;
     background-color: $theme-color-primary;
     color:white;
 }
 
+// medium size
+@media (max-width:768px) {
+    .img-banner{
+        text-align:center;
+        height:20vh;
+    }
+    .content-padding {
+        padding-left:5px;
+        padding-right:5px;
+    }
+
+}
+
 @media (min-width: 1440px) {
     .container-xl{
-        max-width: 1600px;
+        max-width: 100vw;
         padding:0;
     }
 }
@@ -177,6 +207,72 @@ a:hover , .nav-link:hover {
     }
 }
 
-.navbar-brand {
-    max-width: 200px;
+.navbar-brand > img {
+    max-height:60px;;
 }
+
+.navbar {
+    min-height: 80px;
+    text-transform: uppercase;
+}
+
+
+.text-responsive-h1 {
+    font-size: calc(100% + 1vw + 1vh);
+  }
+
+  .content-text-xl {
+    font-size: 20px;
+  }
+
+.content-text-md{
+    font-size: calc(100% + 0.25vw + 0.3vh);
+
+}
+
+.content-text-md {
+    font-size:18px;
+}
+// @media screen(min-width)
+
+.text-justify {
+    text-align:justify
+}
+.text-vertical-center {
+    display:table-cell;
+    vertical-align:middle
+}
+.d-table-cell{
+    display:table-cell;
+}
+.vertical-center {
+    margin:auto
+}
+
+.modal-dialog { /* Width */
+    max-width: 100%;
+    width: auto !important;
+    height:auto!important;
+    display: inline-block;
+}
+
+.magnify-on-hover:hover {
+    transition:1s;
+}
+.magnify-on-hover:hover {
+    cursor: -moz-zoom-in; 
+    cursor: -webkit-zoom-in; 
+    cursor: zoom-in;
+    transition:1s;
+    transform:scale(1.005)
+}
+.modal {
+    z-index: -1;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-open .modal {
+    z-index: 1050;
+ }

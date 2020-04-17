@@ -29,9 +29,9 @@ const Service = (props) => {
                 <Row className="pr-5 pl-5 pt-5 mx-0">
                     <Card className="text-left border-0" style={{ ...customStyle.transparent }}>
                         <CardBody>
-                            <h5>
+                            <span className={"content-text-md"}>
                                 {content_text[language].text1}
-                            </h5>
+                            </span>
                         </CardBody>
                     </Card>
                 </Row>
