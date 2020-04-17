@@ -73,7 +73,7 @@ const TopNavbar = (props) => {
 
     return (
         <>
-            <Navbar className={"container"} color="white" light expand="md" fixed={"top"}>
+            <Navbar className={"container"} color="white" light expand="xl" fixed={"top"}>
                 <NavbarBrand onClick={() => history.push("/")}><img src={SchoolMaxLogo} className="img-responsive" /></NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar style={style.navbar_toolbox}>
