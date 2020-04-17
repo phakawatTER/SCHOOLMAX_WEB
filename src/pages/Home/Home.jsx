@@ -60,24 +60,24 @@ const Home = (props) => {
                         </Card>
                     </Col>
                 </Row>
-                <h1 className="ml-5 text-responsive-h1">
+                <h1 className="ml-5 text-responsive-h1 ">
                     <b>
                         {content_text[language].link_option}
                     </b>
                 </h1>
                 <Row className={"mx-0"}>
-                    <Col md={4} className="text-center option-card primary-bg" onClick={() => history.push("/software")} >
-                        <h1 className="text-responsive-h1">
+                    <Col md={4} className="letter-spacing-animation text-center option-card primary-bg" onClick={() => history.push("/software")} >
+                        <h1 className="text-responsive-h1 font-semi-bold">
                             {content_text[language].option1}
                         </h1>
                     </Col>
-                    <Col md={4} className="text-center option-card secondary-bg px-0" onClick={() => history.push("/product")}>
-                        <h1 className="text-responsive-h1">
+                    <Col md={4} className="letter-spacing-animation text-center option-card secondary-bg px-0" onClick={() => history.push("/product")}>
+                        <h1 className="text-responsive-h1 font-semi-bold">
                             {content_text[language].option2}
                         </h1>
                     </Col>
-                    <Col md={4} className="text-center option-card warning-bg px-0" onClick={() => history.push("/service")}>
-                        <h1 className="text-responsive-h1">
+                    <Col md={4} className="letter-spacing-animation text-center option-card warning-bg px-0" onClick={() => history.push("/service")}>
+                        <h1 className="text-responsive-h1 font-semi-bold">
                             {content_text[language].option3}
                         </h1>
                     </Col>

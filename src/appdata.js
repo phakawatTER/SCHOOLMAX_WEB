@@ -1,7 +1,7 @@
 export const API_SEND_EMAIL = "/send/email" // METHOD IS "POST"
 export const NAVBAR_TEXT = {
     th: { "home": "หน้าหลัก", "software": "ซอฟต์แวร์", "otherproduct": "สินค้าอื่นๆ", "service": "บริการ", "contact": "ติดต่อ" },
-    en: { "home": "home", "software": "software", "otherproduct": "other product", "service": "service", "contact": "contact" }
+    en: { "home": "home", "software": "software", "otherproduct": "other products", "service": "services", "contact": "contact" }
 }
 export const CONTENT_TEXT = {
     "contact": {
@@ -9,7 +9,7 @@ export const CONTENT_TEXT = {
             company:
             {
                 title: "ติดต่อ",
-                address_bold: "บริษัท แสงรุ่ง เอ็ดดูเคชั่น จำกัด",
+                address_bold: "บริษัท แสงรุ้ง เอ็ดดูเคชั่น จำกัด",
                 address: `99/99 หมู่1 ถนนราชพฤกษ์ บางขุนทอง บางกรวย นนทบุรี 11130`,
                 email: "contact@saengroong.com",
                 telephone: "092-369-3969, 088-499-8811",
@@ -111,8 +111,8 @@ export const CONTENT_TEXT = {
                     "เชื่อต่อและใช้งานได้ทันที"
                 ], []
             ],
-            learnmore_right: "เรียนรู้เพิ่มเติม กรุณาดาวน์โหลดโปรแกรมแคตาล็อกด้านขวา หรือติดต่อเรา",
-            learnmore_left: "เรียนรู้เพิ่มเติม กรุณาดาวน์โหลดโปรแกรมแคตาล็อกด้านซ้าย หรือติดต่อเรา"
+            learnmore_right: "เรียนรู้เพิ่มเติม กรุณาดาวน์โหลดโปรแกรมแคตตาล็อกด้านขวา หรือติดต่อเรา",
+            learnmore_left: "เรียนรู้เพิ่มเติม กรุณาดาวน์โหลดโปรแกรมแคตตาล็อกด้านซ้าย หรือติดต่อเรา"
         },
         en: {
             title: "อุปกรณ์สำหรับห้องเรียน",

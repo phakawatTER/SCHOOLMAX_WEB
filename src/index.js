@@ -9,7 +9,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { animateScroll as scroll } from "react-scroll"
 const hist = createBrowserHistory();
-alert(process.env.NODE_ENV)
 hist.listen(location => { // Route change listener
   scroll.scrollToTop()
 })

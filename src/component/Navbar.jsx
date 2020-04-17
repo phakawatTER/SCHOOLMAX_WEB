@@ -66,7 +66,8 @@ const TopNavbar = (props) => {
     const linkClassNames = classNames(
         "link",
         "nav-link",
-        // { "ฟ": language == "th" }
+        { "content-text-md": language == "th" },
+        { "letter-spacing": language == "th" }
     )
 
 
@@ -77,7 +78,7 @@ const TopNavbar = (props) => {
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar style={style.navbar_toolbox}>
                     <Row>
-                        
+
                         <Col>
                             <div className="select-language">
                                 <span style={{ fontWeight: language == "en" ? "bold" : "normal" }}

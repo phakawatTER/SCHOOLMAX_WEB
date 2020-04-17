@@ -20,6 +20,7 @@ import AddressIcon from "./assets/Address-icon.png"
 import EmailIcon from "./assets/Email-icon.png"
 import TelephoneIcon from "./assets/Telephone-icon.png"
 import FacebookIcon from "./assets/Facebook-blue-icon.png"
+import BirdIcon from "./assets/image-1.png"
 import { API_SEND_EMAIL, CONTENT_TEXT } from "appdata"
 import axios from "axios"
 
@@ -53,6 +54,9 @@ const default_input_data = {
     telephone: "",
     message: "",
 }
+
+
+
 
 
 class Contact extends React.Component {
@@ -106,10 +110,8 @@ class Contact extends React.Component {
             <Card className="border-0">
                 <CardHeader className="border-0" style={{ ...customStyle.transparent }} >
                     <CardTitle className="pt-5 text-center">
-                        <h1 className="text-responsive-h1">
-                            <b>
+                        <h1 className="text-responsive-h1 font-semi-bold">
                                 {content_text[language].company.title}
-                            </b>
                         </h1>
                     </CardTitle>
                 </CardHeader>
@@ -117,7 +119,7 @@ class Contact extends React.Component {
                     <Row className="m-4 pt-4">
                         <Col xs={4} align="center"><img src={AddressIcon} style={{ ...customStyle.image_content }} /></Col>
                         <Col xs={8} align="center" className="text-left">
-                            <b>{content_text[language].company.address_bold}</b>{" "}
+                            <b>{content_text[language].company.address_bold}</b>{" "}<br />
                             {content_text[language].company.address}
                         </Col>
                     </Row>
@@ -149,10 +151,8 @@ class Contact extends React.Component {
             <Card className="border-0 mx-auto">
                 <CardHeader className="border-0" style={{ ...customStyle.transparent }} >
                     <CardTitle className="pt-5 text-center">
-                        <h1 className="text-responsive-h1">
-                            <b>
+                        <h1 className="text-responsive-h1 font-semi-bold">
                                 {content_text[language].client.title}
-                            </b>
                         </h1>
                     </CardTitle>
                 </CardHeader>
@@ -201,6 +201,11 @@ class Contact extends React.Component {
                         <Button
                             onClick={this.contactCompanyHandler}
                             className="primary-bg btn-primary px-5">{content_text[language].client.button_label}</Button>
+                    </Row>
+                    <Row className="d-flex justify-content-center">
+                        <Col className={"text-center"}>
+                            <img src={BirdIcon} className={"w-auto"} />
+                        </Col>
                     </Row>
                 </CardBody>
             </Card>

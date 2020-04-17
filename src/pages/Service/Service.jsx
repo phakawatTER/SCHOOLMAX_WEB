@@ -28,16 +28,16 @@ const Service = (props) => {
                 </Row>
                 <Row className="pr-5 pl-5 pt-5 mx-0">
                     <Card className="text-left border-0" style={{ ...customStyle.transparent }}>
-                        <CardBody>
+                        <CardBody className={"p-0"}>
                             <span className={"content-text-md"}>
                                 {content_text[language].text1}
                             </span>
                         </CardBody>
                     </Card>
                 </Row>
-                <Row className="pr-5 pl-5 mx-0">
+                <Row className="pl-5 mx-0">
                     <Card className="text-left border-0" style={{ ...customStyle.transparent }}>
-                        <CardBody>
+                        <CardBody className={"p-0"}>
                             {getBulletPoints()}
                         </CardBody>
                     </Card>

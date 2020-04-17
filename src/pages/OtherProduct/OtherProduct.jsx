@@ -1,7 +1,7 @@
 import React from "react"
 import { Row, Col, CardHeader, CardTitle, Card, CardBody, Label, Container } from "reactstrap"
 import Product1 from "./assets/image-1.jpg"
-import Product2 from "./assets/image-2.jpg"
+import Product2 from "./assets/image-2.png"
 import CatalogTH from "./assets/catalog-icon---th.png"
 import CatalogEN from "./assets/catalog-icon---en.png"
 import { CONTENT_TEXT } from "appdata"
@@ -43,15 +43,11 @@ const OtherProduct = (props) => {
                 <Card className="border-0 mx-0" >
                     <CardHeader className="border-0" style={{ ...customStyle.transparent }}>
                         <CardTitle>
-                            <h1 className="text-disabled ml-5 text-responsive-h1 d-none d-sm-block">
-                                <b>
-                                    {product}
-                                </b>
+                            <h1 className="text-disabled ml-5 text-responsive-h1 d-none d-sm-block font-semi-bold">
+                                {product}
                             </h1>
-                            <h1 className="text-disabled d-block d-sm-none text-responsive-h1 ">
-                                <b>
-                                    {product}
-                                </b>
+                            <h1 className="text-disabled d-block d-sm-none text-responsive-h1 font-semi-bold ">
+                                {product}
                             </h1>
                         </CardTitle>
                     </CardHeader>
@@ -83,11 +79,11 @@ const OtherProduct = (props) => {
                             </Col>
                         </Row>
                         <Row>
-                            <Col>
-                                <span className={"content-text-md align-items-center ml-5 d-none d-sm-block"}>
+                            <Col className="align-items-center d-flex">
+                                <span className={"content-text-xl align-items-center ml-5 d-none d-sm-block"}>
                                     {learnmore_right}
                                 </span>
-                                <span className={"content-text-md align-items-center d-block d-sm-none"}>
+                                <span className={"content-text-xl align-items-center d-block d-sm-none"}>
                                     {learnmore_right}
                                 </span>
                             </Col>
@@ -116,29 +112,20 @@ const OtherProduct = (props) => {
 
         return (
             <>
-
-
-                <Card className="border-0 faded-row mx-0">
+                <Card className="border-0 faded-row mx-0 pt-5">
                     <CardHeader className="border-0" style={{ ...customStyle.transparent }}>
                         <CardTitle>
                             <Row>
                                 <Col></Col>
                                 <Col xs={12} md={6}>
-                                    <h1 className="text-disabled text-responsive-h1" align="left">
-                                        <b>
-                                            {product}
-                                        </b>
-
+                                    <h1 className="text-disabled text-responsive-h1 font-semi-bold" align="left">
+                                        {product}
                                     </h1>
                                 </Col>
                             </Row>
                         </CardTitle>
                     </CardHeader>
                     <CardBody className="">
-                        {/* <Row>
-                            <Col ></Col>
-
-                        </Row> */}
                         <Row className={"pt-0 mx-0"}>
                             <Col />
                             <Col xs={12} md={6}>
@@ -157,7 +144,7 @@ const OtherProduct = (props) => {
                                 }
                             </Col>
                             <Col align="left" className={"align-items-center d-flex "}  >
-                                <span className={"content-text-md"}>
+                                <span className={"content-text-xl"}>
                                     {learnmore_left}
                                 </span>
                             </Col>
@@ -177,10 +164,8 @@ const OtherProduct = (props) => {
                     <img src={require("./assets/Other-products-banner.jpg")} className="img-banner" />
                 </Row>
 
-                <h1 className="text-primary ml-5 py-5 text-responsive-h1">
-                    <b>
-                        {content_text[language].title}
-                    </b>
+                <h1 className="text-primary ml-5 py-5 text-responsive-h1 font-semi-bold">
+                    {content_text[language].title}
                 </h1>
                 {BenQInteractiveFlatPanel()}
                 {BenQSmartProjector()}
